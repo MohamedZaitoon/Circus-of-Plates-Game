@@ -1,0 +1,35 @@
+#workspace{
+	-fx-background-image: url("MainMenuBackground.png");
+	-fx-background-size: 100%;
+	-fx-background-repeat: round  ;
+	-fx-background-color: #EEE;
+}
+#bottomButtons{
+	-fx-background-color: rgba(0,0,0,0.5) ;
+	-fx-text-fill:  white ;
+	-fx-font-size: 125%;
+}
+#levels{
+	-fx-border-width: 3px;
+	-fx-border-color: rgba(0,0,0,.6);
+}
+#levels:hover{
+	-fx-border-width: 3px;
+	-fx-border-color: rgba(153,217,234,.6);
+}
+#levels:selected .anchorpane:selected{
+	-fx-border-width: 3px;
+	-fx-border-color: rgba(0,200,0,.6);
+}
+#levelsPanel{
+	-fx-background-color: rgba(0,0,0,.2);
+}
+#start{
+	-fx-background-color: rgb(225,23,38);
+	-fx-font-size: 150%;
+	-fx-text-fill: white;
+}
+#start:hover{
+	-fx-background-color: seagreen ;
+	-fx-text-fill:black;
+}

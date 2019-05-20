@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="workspace" fx:id="workspace" prefHeight="400.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eg.edu.alexu.csd.oop.game.ui.MainMenuController">
+   <children>
+      <ImageView fx:id="currentModeImg" fitHeight="51.0" fitWidth="61.0" layoutX="34.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="200.0" />
+      <Label fx:id="modeN" layoutX="112.0" layoutY="207.0" prefHeight="35.0" prefWidth="78.0" textFill="#ffe800">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="start" layoutX="34.0" layoutY="32.0" mnemonicParsing="false" onAction="#startGame" prefHeight="51.0" prefWidth="155.0" text="Start" AnchorPane.leftAnchor="34.0" AnchorPane.topAnchor="30.0" />
+      <StackPane layoutX="34.0" layoutY="86.0" prefHeight="100.0" prefWidth="155.0" AnchorPane.leftAnchor="34.0" AnchorPane.topAnchor="86.0">
+         <children>
+            <ImageView fx:id="mapImage" fitHeight="100.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true" />
+            <AnchorPane onMousePressed="#selectMap" prefHeight="100.0" prefWidth="155.0">
+               <children>
+                  <Label fx:id="mapName" alignment="CENTER" layoutY="48.0" prefHeight="25.0" prefWidth="155.0" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label fx:id="difficulity" alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: rgba(0,0,0,.3);" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
+      <HBox layoutX="178.0" layoutY="300.0" prefHeight="50.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="400.0">
+         <children>
+            <Button id="bottomButtons" mnemonicParsing="false" onAction="#showProfile" prefHeight="50.0" prefWidth="100.0" text="Profile" />
+            <Button id="bottomButtons" mnemonicParsing="false" onAction="#showMode" prefHeight="50.0" prefWidth="100.0" text="Mode" />
+            <Button id="bottomButtons" mnemonicParsing="false" onAction="#plugin" prefHeight="50.0" prefWidth="100.0" text="Plugin" />
+         </children>
+      </HBox>
+      <HBox layoutX="592.0" layoutY="300.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="50.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Button id="bottomButtons" mnemonicParsing="false" onAction="#toggelSound" prefHeight="50.0" prefWidth="100.0" text="Sounds" />
+            <Button id="bottomButtons" mnemonicParsing="false" onAction="#showCredit" prefHeight="50.0" prefWidth="100.0" text="Credits" />
+            <Button id="bottomButtons" mnemonicParsing="false" onAction="#showScore" prefHeight="50.0" prefWidth="100.0" text="Score" />
+         </children>
+      </HBox>
+      <Canvas fx:id="userImage" height="60.0" width="60.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="30.0" />
+      <Label fx:id="currentScore" alignment="CENTER" layoutX="683.0" layoutY="30.0" prefHeight="17.0" prefWidth="100.0" text="Score" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="40.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label fx:id="name" alignment="CENTER" layoutX="693.0" layoutY="40.0" prefHeight="17.0" prefWidth="100.0" text="username" textFill="#0f0300" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="70.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <AnchorPane id="levelsPanel" fx:id="profilePage" layoutX="328.0" layoutY="103.0" onMouseClicked="#hideScreen" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox layoutX="332.0" layoutY="67.0" prefHeight="300.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="50.0">
+               <children>
+                  <ListView fx:id="users" prefHeight="259.0" prefWidth="172.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </ListView>
+                  <TextField fx:id="newUserName" onAction="#createUser">
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <HBox prefHeight="62.0" prefWidth="228.0" spacing="4.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#selectUser" prefHeight="25.0" prefWidth="70.0" text="Select">
+                           <HBox.margin>
+                              <Insets left="5.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#createUser" prefWidth="70.0" text="Create">
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#deleteUser" prefWidth="70.0" text="Delete">
+                           <HBox.margin>
+                              <Insets right="5.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane id="levelsPanel" fx:id="scoreSheet" layoutX="277.0" layoutY="67.0" onMouseClicked="#hideScreen" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ListView fx:id="scores" layoutX="324.0" layoutY="69.0" prefHeight="300.0" prefWidth="300.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="50.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane id="levelsPanel" fx:id="levels" onMouseClicked="#hideScreen" prefHeight="400.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="0.0" prefWidth="0.0" spacing="5.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="100.0">
+               <children>
+                  <StackPane id="levels" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="mapImage1" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <AnchorPane onMouseClicked="#selectEasy" prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label fx:id="mapName1" alignment="CENTER" layoutY="48.0" prefHeight="25.0" prefWidth="200.0" text="Wheat Field" textFill="WHITE" AnchorPane.bottomAnchor="25.0" />
+                              <Label alignment="CENTER" layoutY="172.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,.3);" text="Easy" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </StackPane>
+                  <StackPane id="levels" fx:id="stackMedium" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="mapImage2" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <AnchorPane onMouseClicked="#selectMedium" prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label fx:id="mapName2" alignment="CENTER" layoutY="48.0" prefHeight="25.0" prefWidth="200.0" text="Too Bright" textFill="WHITE" AnchorPane.bottomAnchor="25.0" />
+                              <Label alignment="CENTER" layoutY="172.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,.3);" text="Medium" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </StackPane>
+                  <StackPane id="levels" fx:id="stackHard" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="mapImage3" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <AnchorPane onMouseClicked="#selectHard" prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label fx:id="mapName3" alignment="CENTER" layoutY="48.0" prefHeight="25.0" prefWidth="200.0" text="Assassin's Mood" textFill="WHITE" AnchorPane.bottomAnchor="25.0" />
+                              <Label alignment="CENTER" layoutY="172.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,.3);" text="Hard" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </StackPane>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane id="levelsPanel" fx:id="modes" layoutX="10.0" layoutY="10.0" onMouseClicked="#hideScreen" prefHeight="400.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox layoutX="236.0" layoutY="147.0" prefHeight="0.0" prefWidth="0.0" spacing="5.0" AnchorPane.leftAnchor="234.0" AnchorPane.topAnchor="150.0">
+               <children>
+                  <StackPane id="levels" prefHeight="100.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fx:id="timeModeImage" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                        <AnchorPane onMouseClicked="#selectTimeMode" prefHeight="138.0" prefWidth="100.0" StackPane.alignment="CENTER">
+                           <children>
+                              <Label alignment="CENTER" layoutY="172.0" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: rgba(0,0,0,.3);" text="Time" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </StackPane>
+                  <StackPane id="levels" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="scoreModeImage" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                        <AnchorPane onMouseClicked="#selectScoreMode" prefHeight="100.0" prefWidth="100.0">
+                           <children>
+                              <Label alignment="CENTER" layoutY="172.0" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: rgba(0,0,0,.3);" text="Score" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </StackPane>
+                  <StackPane id="levels" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="lifeModeImage" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                        <AnchorPane onMouseClicked="#selectLifeMode" prefHeight="100.0" prefWidth="100.0">
+                           <children>
+                              <Label alignment="CENTER" layoutY="172.0" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: rgba(0,0,0,.3);" text="Life" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </StackPane>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="creditPage" layoutX="20.0" layoutY="20.0" style="-fx-background-color: BLACK;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox fx:id="creditListLeft" alignment="CENTER" layoutX="264.0" layoutY="49.0" prefHeight="300.0" prefWidth="150.0">
+               <children>
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="PlatesUBG" textAlignment="CENTER" wrappingWidth="100.13671875">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="by" textAlignment="CENTER" wrappingWidth="100.13671875" />
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="100.13671875" />
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Programmers" textAlignment="CENTER" wrappingWidth="100.13671875">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.5" />
+                     </effect>
+                  </Text>
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Mostafa Fares" textAlignment="CENTER" wrappingWidth="100.13671875" />
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Mazen Zakaria" textAlignment="CENTER" wrappingWidth="100.13671875" />
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="M. Alkazzafy" textAlignment="CENTER" wrappingWidth="100.13671875" />
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="M. Samir Zaitoon" textAlignment="CENTER" wrappingWidth="124.13671875" />
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="M. Hesham Alkhaligy" textAlignment="CENTER" wrappingWidth="145.13671875" />
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="100.13671875" />
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Design" textAlignment="CENTER" wrappingWidth="100.13671875">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.5" />
+                     </effect>
+                  </Text>
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="M. Hesham Alkhaligy" textAlignment="CENTER" wrappingWidth="127.13671875" />
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="100.13671875" />
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Character Design" textAlignment="CENTER" wrappingWidth="112.13671875">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.5" />
+                     </effect>
+                  </Text>
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="M. Hesham Alkhaligy" textAlignment="CENTER" wrappingWidth="148.13671875" />
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Marwan Fetteha" textAlignment="CENTER" wrappingWidth="127.13671875" />
+               </children>
+            </VBox>
+            <VBox fx:id="creditListRight" alignment="CENTER" layoutX="414.0" layoutY="53.0" prefHeight="300.0" prefWidth="150.0">
+               <children>
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Level Design" textAlignment="CENTER" wrappingWidth="100.13671875">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.5" />
+                     </effect>
+                  </Text>
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Mazen Zakaria" textAlignment="CENTER" wrappingWidth="118.13671875" />
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Mostafa Fares" textAlignment="CENTER" wrappingWidth="118.13671875" />
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="M. Hesham Alkhaligy" textAlignment="CENTER" wrappingWidth="151.13671875" />
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="118.13671875" />
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Physics" textAlignment="CENTER" wrappingWidth="100.13671875">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.5" />
+                     </effect>
+                  </Text>
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="M. Alkazzafy" textAlignment="CENTER" wrappingWidth="100.13671875" />
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Mazen Zakaria" textAlignment="CENTER" wrappingWidth="118.13671875" />
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="118.13671875" />
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Testing" textAlignment="CENTER" wrappingWidth="100.13671875">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.5" />
+                     </effect>
+                  </Text>
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="M. Hesham Alkhaligy" textAlignment="CENTER" wrappingWidth="148.13671875" />
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Mazen Zakaria" textAlignment="CENTER" wrappingWidth="118.13671875" />
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="M. Samir Zaitoon" textAlignment="CENTER" wrappingWidth="118.13671875" />
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="118.13671875" />
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Resources Disclaimer" textAlignment="CENTER" wrappingWidth="137.13671875">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.5" />
+                     </effect>
+                  </Text>
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="2SCRATCH PUBG REMIX" textAlignment="CENTER" wrappingWidth="172.13671875" />
+                  <Text fill="#fff9f9" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Lost With You Ft Ekberg" textAlignment="CENTER" wrappingWidth="170.13671875" />
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
